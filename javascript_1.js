@@ -1,7 +1,6 @@
 /* javascript_1.js */
 
 // https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
-
 // Define AJAX read function
 function readFile(file, callback) {
 	let input = new XMLHttpRequest();
@@ -18,8 +17,8 @@ function readFile(file, callback) {
 // Load file
 readFile('quote_source.json', function(text){
 	let quotes = JSON.parse(text);
-	
+
 	let quote = quotes[Math.floor(Math.random()*10)].c1 + ', ' + quotes[Math.floor(Math.random()*10)].c2 + ', ' + quotes[Math.floor(Math.random()*10)].c3 + '.';
-	
+
 	console.log(quote);
 });

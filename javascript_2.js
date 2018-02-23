@@ -19,16 +19,16 @@ function readFile(file, callback) {
 readFile('quote_source.json', function(text){
 	let quotes = JSON.parse(text);
 	let numQuotes = 0;
-	
-	while ( numQuotes < 1 || numQuotes > 5 ) {
+
+	while ( numQuotes < 1 || numQuotes > 5 || isNaN(numQuotes)) {
 		numQuotes = prompt("Enter number of quotes to generate (1..5): ");
 	}
-	
+
 	console.clear();
-	
+
 	for (let i = 1; i <= numQuotes; i++) {
 		let quote = i + '. ' + quotes[Math.floor(Math.random() * 10)].c1 + ', ' + quotes[Math.floor(Math.random() * 10)].c2 + ', ' + quotes[Math.floor(Math.random() * 10)].c3 + '.';
-	
+
 		console.log(quote);
 	}
 });

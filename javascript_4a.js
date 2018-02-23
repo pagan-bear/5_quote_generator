@@ -13,7 +13,6 @@ const haiku1 = [
 	{ "c1": "In the twilight rain", "c2": "this brilliant-hued hibiscus", "c3": "a beautiful thought" },
 	{ "c1": "Light of the blue moon", "c2": "the colour and scent of blood", "c3": "seems so far away" }
 ]
-
 const haiku2 = [
 	{ "c1": "Book plunder to him",  "c2": "he approved and pondered more", "c3": "I want more furniture" },
 	{ "c1": "Playing your totem",  "c2": "I considered your fingers", "c3": "before your luggage" },
@@ -29,45 +28,46 @@ const haiku2 = [
 ]
 
 // Initalise program repeat variable and create control condition to repeat until user wants to quit
-let again;
+let repeat = true;
 
 do {
 	// Introduction
-	console.log("\nGreetings!");
+	console.log("Greetings!");
 	console.log("I am an auto Haiku generator. I have two source files you can choose from:");
 	console.log("(1. Children's Haiku, or, 2. Adults' Haiku)");
 
 	// Initialise choice variables.
 	let haikuChoice = 0;
 	let numQuotes = 0;
-	again = undefined;
 
-	// Get user's choice until valid.
+	// Initialise haikuChoice. Ask for user's choice until valid.
 	while ( haikuChoice < 1 || haikuChoice > 2 || isNaN(haikuChoice) ) {
 		haikuChoice = prompt("Enter source: (1) children's haikus or (2) - adult's haikus: ");
 	}
-	haikuSource = (haikuChoice == 1) ? haiku1 : haiku2;
+	(haikuChoice == 1) ? haikuSource = haiku1 : haikuSource = haiku2;
 
-	// Get user's choice until valid.
+	// Initialise numQuotes variable. Ask for user's choice until valid.
 	while (numQuotes < 1 || numQuotes > 5 || isNaN(numQuotes) ) {
 		numQuotes = prompt("Enter number of quotes to generate (1..5): ");
 	}
 
 	// Create a random haiku, each section chosen from different rows of the source file
 	for ( let i = 0; i < numQuotes; i++ ) {
-	randomQuote = (haikuSource[Math.floor(Math.random()*haikuSource.length)].c1 + ' ' +
-		haikuSource[Math.floor(Math.random()*haikuSource.length)].c2 + ' ' +
-		haikuSource[Math.floor(Math.random()*haikuSource.length)].c3 + ' ');
+		randomQuote = (haikuSource[Math.floor(Math.random()*10)].c1 + ' ' +
+		haikuSource[Math.floor(Math.random()*10)].c2 + ' ' +
+		haikuSource[Math.floor(Math.random()*10)].c3 + ' ');
 
-		console.log('\n' + randomQuote);
+		console.log(randomQuote);
 	}
 
 	// Run program again? (1 or 2)
 	// Initialise again variable. Ask for user's choice until valid.
+	let again = '';
 	while ( again < 1 || again > 2 || isNaN(again) ) {
 		again = prompt("Would you like me to generate some more Haiku? (1) yes or (2) no: ")
 	}
 	// ***Debug - console.log("You selected again: " + again);
 	// Does the user want to generate more Haiku?
+	(again == 1) ? repeat = true : repeat = false;
 	// ***Debug - console.log("Repeat value is:" + repeat);
-} while (again == 1)
+} while (repeat)
