@@ -5,7 +5,7 @@
 function readFile(file, callback) {
 	let input = new XMLHttpRequest();
 	input.overrideMimeType('application/json');
-	input.open('GET', 'http://localhost:5000/quote_source.json', true);
+	input.open('GET', 'quote_source.json', true);
 	input.onreadystatechange = function() {
 		if (input.readyState == 4 && input.status == "200") {
 			callback(input.responseText);
